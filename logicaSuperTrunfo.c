@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <string.h> // Necessário para strcmp
 
-// Estrutura para armazenar os dados da cidade
 typedef struct {
     char estado[3];
     char codigo[10];
@@ -14,56 +14,64 @@ typedef struct {
 } CartaCidade;
 
 int main() {
-    // Definição das duas cartas
     CartaCidade carta1, carta2;
 
-    // Cadastro da primeira carta
     printf("=== Cadastro da Carta 1 ===\n");
     printf("Estado (sigla): ");
     scanf("%s", carta1.estado);
+    while (getchar() != '\n');
+
     printf("Código da carta: ");
     scanf("%s", carta1.codigo);
+    while (getchar() != '\n');
+
     printf("Nome da cidade: ");
-    scanf(" %[^\n]", carta1.nome); // permite entrada com espaços
+    scanf(" %[^\n]", carta1.nome);
+
     printf("População: ");
     scanf("%d", &carta1.populacao);
+
     printf("Área (km²): ");
     scanf("%f", &carta1.area);
+
     printf("PIB (em milhões): ");
     scanf("%f", &carta1.pib);
+
     printf("Número de pontos turísticos: ");
     scanf("%d", &carta1.pontosTuristicos);
 
-    // Cálculo da densidade populacional e PIB per capita da carta 1
     carta1.densidadePopulacional = carta1.populacao / carta1.area;
     carta1.pibPerCapita = carta1.pib / carta1.populacao;
 
-    // Cadastro da segunda carta
     printf("\n=== Cadastro da Carta 2 ===\n");
     printf("Estado (sigla): ");
     scanf("%s", carta2.estado);
+    while (getchar() != '\n');
+
     printf("Código da carta: ");
     scanf("%s", carta2.codigo);
+    while (getchar() != '\n');
+
     printf("Nome da cidade: ");
-    scanf(" %[^\n]", carta2.nome); // permite entrada com espaços
+    scanf(" %[^\n]", carta2.nome);
+
     printf("População: ");
     scanf("%d", &carta2.populacao);
+
     printf("Área (km²): ");
     scanf("%f", &carta2.area);
+
     printf("PIB (em milhões): ");
     scanf("%f", &carta2.pib);
+
     printf("Número de pontos turísticos: ");
     scanf("%d", &carta2.pontosTuristicos);
 
-    // Cálculo da densidade populacional e PIB per capita da carta 2
     carta2.densidadePopulacional = carta2.populacao / carta2.area;
     carta2.pibPerCapita = carta2.pib / carta2.populacao;
 
-    // Escolha do atributo para comparação:
-    // Altere essa string para "populacao", "area", "pib", "densidade", "pib_per_capita"
-    char atributoComparacao[] = "pib";  // <-- Altere aqui se quiser testar outro atributo
+    char atributoComparacao[] = "pib";
 
-    // Comparação das cartas com base no atributo escolhido
     printf("\n=== Comparação de Cartas (Atributo: %s) ===\n", atributoComparacao);
 
     if (strcmp(atributoComparacao, "populacao") == 0) {
